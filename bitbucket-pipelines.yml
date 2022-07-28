@@ -1,0 +1,12 @@
+pipelines:
+  default:
+    - step:
+      name: Deploy to production
+      deployment: production
+      script:
+        - echo "Deploying to production environment"
+        - pipe: atlassian/ssh-run0.2.2
+          variables:
+            SSH_USER: 'ubuntu'
+            SERVER: '3.131.36.138'
+            COMMAND: '/home/pipelines/deploy-ui.sh'
